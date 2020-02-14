@@ -1,0 +1,36 @@
+service: aws-python-telegram-bot
+
+provider:
+  name: aws
+  runtime: python3.7
+  stage: ${opt:stage, 'dev'}
+  environment:
+    TELEGRAM_TOKEN: ${file(./serverless.${self:provider.stage}.yml):TELEGRAM_TOKEN, ''}
+
+package:
+  exclude:
+    - node_modules/**
+    - .serverless/**
+    - .idea/**
+    - .vscode/**
+    - package.json
+    - package-lock.json
+    - .gitignore
+
+functions:
+  webhook:
+    handler: handler.webhook
+    layers:
+      - arn:aws:lambda:${self:provider.region}:113088814899:layer:Klayers-python37-opencv-python-headless:9
+    events:
+      - http: POST /
+
+  set_webhook:
+    handler: handler.set_webhook
+    layers:
+      - arn:aws:lambda:${self:provider.region}:113088814899:layer:Klayers-python37-opencv-python-headless:9
+    events:
+      - http: GET /hook
+
+plugins:
+  - serverless-python-requirements

@@ -1,0 +1,25 @@
+{
+  "name": "aws-python-telegram-bot",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jqs7/sls-blur-delete.git"
+  },
+  "keywords": [
+    "python",
+    "aws",
+    "lambda",
+    "serverless",
+    "telegram",
+  ],
+  "author": "jqs7",
+  "license": "MIT",
+  "dependencies": {},
+  "bugs": {
+    "url": "https://github.com/jqs7/sls-blur-delete/issues"
+  },
+  "homepage": "https://github.com/jqs7/sls-blur-delete#readme",
+  "devDependencies": {
+    "serverless-python-requirements": "^5.0.1"
+  }
+}
